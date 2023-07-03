@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 require("./models/user");
 require("./models/post");
 require("./models/comment");
+require("./models/otp");
 const authRouter = require("./routes/auth");
 const postRouter = require("./routes/post");
 const UserRouter = require("./routes/user");

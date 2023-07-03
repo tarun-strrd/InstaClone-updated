@@ -9,6 +9,7 @@ const Comment = mongoose.model("Comment");
 router.get("/allposts", checkLogin, (req, res) => {
   Post.find()
     .populate("postedBy", "_id name profilePic")
+    .sort("-createdAt")
     .then((posts) => {
       res.status(200).json({ posts });
     })
@@ -20,6 +21,7 @@ router.get("/allposts", checkLogin, (req, res) => {
 router.get("/followingPosts", checkLogin, (req, res) => {
   Post.find({ postedBy: { $in: req.user.following } })
     .populate("postedBy", "_id name profilePic")
+    .sort("-createdAt")
     .then((posts) => {
       res.status(200).json({ posts });
     })
@@ -27,6 +29,7 @@ router.get("/followingPosts", checkLogin, (req, res) => {
       console.log(err);
     });
 });
+
 router.post("/createpost", checkLogin, (req, res) => {
   const { title, description, pic } = req.body;
   if (!title || !description || !pic) {

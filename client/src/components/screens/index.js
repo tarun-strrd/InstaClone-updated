@@ -5,5 +5,15 @@ import Login from "./Signin.js";
 import CreatePost from "./CreatePost";
 import UserProfile from "./UserPorfile";
 import SubsPosts from "./SubsPosts";
+import ForgotPassword from "./ForgotPassword";
 
-export { Home, Login, Profile, Signup, CreatePost, UserProfile, SubsPosts };
+export {
+  Home,
+  Login,
+  Profile,
+  Signup,
+  CreatePost,
+  UserProfile,
+  SubsPosts,
+  ForgotPassword,
+};

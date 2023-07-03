@@ -77,6 +77,9 @@ const Login = () => {
         <h6 style={{ fontSize: 12 }}>
           <Link to="/signup">New to Instagram? Signup here..</Link>
         </h6>
+        <h6 style={{ fontSize: 12 }}>
+          <Link to="/forgot-password">forgot password?</Link>
+        </h6>
       </div>
     </div>
   );

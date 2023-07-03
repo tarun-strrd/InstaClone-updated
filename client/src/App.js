@@ -17,6 +17,7 @@ import {
   CreatePost,
   UserProfile,
   SubsPosts,
+  ForgotPassword,
 } from "./components/screens/index";
 import { reducer } from "./reducers/userReducer";
 
@@ -40,6 +41,7 @@ const Routing = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/create" element={<CreatePost />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route exact path="/profile/:userId" element={<UserProfile />} />
       <Route path="*" element={<h1>NOT FOUND</h1>} />
     </Routes>
