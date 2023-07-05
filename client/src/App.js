@@ -20,6 +20,13 @@ import {
   ForgotPassword,
 } from "./components/screens/index";
 import { reducer } from "./reducers/userReducer";
+import "materialize-css/dist/css/materialize.min.css";
+import M from "materialize-css";
+
+// Initialize Materialize components
+document.addEventListener("DOMContentLoaded", function () {
+  M.AutoInit();
+});
 
 const Routing = () => {
   const { state, dispatch } = useContext(UserContext);

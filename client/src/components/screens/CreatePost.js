@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import M from "materialize-css";
 
-function CreatePost() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+function CreatePost({ modalRef, onClose }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+  const fileInputRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +35,7 @@ function CreatePost() {
           if (data.error) {
             M.toast({ html: data.error, classes: "#f44336 red" });
           } else {
+            onClose();
             M.toast({ html: "Posted Succesffuly", classes: "#4caf50 green" });
             navigate("/");
           }
@@ -61,67 +62,72 @@ function CreatePost() {
       .catch((err) => console.log(err));
   };
 
-  const handleCreatePostClick = () => {
-    setIsPopupOpen((prev) => {
-      return !prev;
-    });
+  const openFileInput = () => {
+    fileInputRef.current.click();
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
   return (
-    <div style={{ textAlign: "center" }}>
-      <button
-        onClick={handleCreatePostClick}
-        className="btn"
-        style={{ margin: 200 }}
-      >
-        Something on mind...<i className="material-icons">mood</i>
-      </button>
-      {isPopupOpen && (
-        <div className="overlay">
-          <div className="popup">
-            <input
-              type="text"
-              placeholder="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <div className="file-field input-field">
-              <div className="btn">
-                <span>Upload Image</span>
+    <div id="create-post-modal" ref={modalRef} className="modal">
+      <div className="modal-content">
+        <h4 style={{ color: "black" }}>Create Post</h4>
+        <div style={{ textAlign: "center" }}>
+          {
+            <div>
+              <div>
                 <input
-                  type="file"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  type="text"
+                  placeholder="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
-              </div>
-              <div className="file-path-wrapper">
-                <input className="file-path validate" type="text" />
+                <input
+                  type="text"
+                  placeholder="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+                <div className="file-field input-field">
+                  <div className="btn">
+                    <span onClick={openFileInput} ref={fileInputRef}>
+                      Upload Image
+                    </span>
+                    <input type="file" onChange={handleImageUpload} />
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <button
+                    className="btn #1e88e5 blue darken-1"
+                    name="action"
+                    onClick={() => postSubmit()}
+                  >
+                    post{" "}
+                  </button>
+                </div>
               </div>
             </div>
-            <div style={{ display: "flex" }}>
-              <button
-                className="btn #1e88e5 blue darken-1"
-                name="action"
-                onClick={handleCreatePostClick}
-              >
-                cancel
-              </button>
-              <button
-                className="btn #1e88e5 blue darken-1"
-                name="action"
-                onClick={() => postSubmit()}
-              >
-                post
-              </button>
-            </div>
-          </div>
+          }
         </div>
-      )}
+      </div>
+      <div className="modal-footer">
+        <button
+          style={{
+            borderColor: "#f45757",
+            border: "solid",
+            borderRadius: 5,
+          }}
+          className="modal-close waves-effect waves-green btn-flat"
+          onClick={onClose}
+        >
+          Discard
+        </button>
+      </div>
     </div>
   );
 }
