@@ -7,7 +7,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
 const checkLogin = require("../middleware/checkLogin");
-const { EMAIL, PASSWORD } = require("../env.js");
+const EMAIL = process.env.NODE_EMAIL;
+const PASSWORD = process.env.NODE_PASS;
 const nodemailer = require("nodemailer");
 const Mailgen = require("mailgen");
 
