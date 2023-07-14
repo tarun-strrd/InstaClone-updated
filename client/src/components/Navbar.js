@@ -5,8 +5,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import M from "materialize-css";
 import { CreatePost } from "./screens";
-import { model } from "mongoose";
-import { compareSync } from "bcryptjs";
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const navbarClassName = scrolled ? "navbar scrolled" : "navbar";
