@@ -8,7 +8,7 @@ const SinglePost = (props) => {
 
   useEffect(() => {
     console.log("inde");
-    fetch(`/post/${postId}`, {
+    fetch(`http://localhost:5000/post/${postId}`, {
       method: "GET",
       headers: {
         "Content-Type": "applicaton/json",

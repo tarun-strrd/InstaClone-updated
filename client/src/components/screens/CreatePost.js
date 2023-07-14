@@ -21,7 +21,7 @@ function CreatePost({ modalRef, onClose }) {
       );
 
       //console.log([...headers.entries()]);
-      fetch("/post/createpost", {
+      fetch("http://localhost:5000/post/createpost", {
         method: "post",
         headers: headers,
         body: JSON.stringify({

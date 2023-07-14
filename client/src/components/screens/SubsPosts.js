@@ -8,7 +8,7 @@ const SubsPosts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("/post/followingPosts", {
+    fetch("http://localhost:5000/post/followingPosts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const SubsPosts = () => {
   }, []);
 
   const toggleLike = (url, postId) => {
-    fetch(url, {
+    fetch(`http://localhost:5000${url}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

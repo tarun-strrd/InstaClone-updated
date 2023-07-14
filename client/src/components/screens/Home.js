@@ -8,7 +8,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("/post/allposts", {
+    fetch("http://localhost:5000/post/allposts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const Home = () => {
   }, []);
 
   const toggleLike = (url, postId) => {
-    fetch(url, {
+    fetch(`http://localhost:5000${url}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const Home = () => {
   };
 
   const addComment = (comment, postId) => {
-    fetch("/post/comment", {
+    fetch("http://localhost:5000/post/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const Home = () => {
   };
 
   const deletePost = (postId) => {
-    fetch(`/post/${postId}`, {
+    fetch(`http://localhost:5000/post/${postId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

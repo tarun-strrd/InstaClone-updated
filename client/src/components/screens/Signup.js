@@ -41,7 +41,7 @@ const Signup = () => {
       M.toast({ html: "Provide valid Email", classes: "#f44336 red" });
       return;
     }
-    fetch("/auth/signup", {
+    fetch("http://localhost:5000/auth/signup", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

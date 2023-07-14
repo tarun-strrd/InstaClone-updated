@@ -7,7 +7,7 @@ const Profile = () => {
   const [image, setImage] = useState("");
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
-    fetch("/post/myposts", {
+    fetch("http://localhost:5000/post/myposts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const Profile = () => {
             .json()
             .then((data) => {
               setUrl(data.url);
-              fetch("/user/updatePic", {
+              fetch("http://localhost:5000/user/updatePic", {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",

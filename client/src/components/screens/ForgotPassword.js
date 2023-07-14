@@ -17,7 +17,7 @@ const ForgotPassword = () => {
       M.toast({ html: "Provide valid Email", classes: "#f44336 red" });
       return;
     }
-    fetch("/auth/sendOtp", {
+    fetch("http://localhost:5000/auth/sendOtp", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const ForgotPassword = () => {
   };
 
   const changePassword = () => {
-    fetch("/auth/resetpassword", {
+    fetch("http://localhost:5000/auth/resetpassword", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
