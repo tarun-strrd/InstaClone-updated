@@ -28,7 +28,8 @@ app.use("/auth", authRouter);
 app.use("/post", postRouter);
 app.use("/user", UserRouter);
 app.get("/", (req, res) => {
-  res.json("heool");
+  console.log("ndj");
+  res.json("hello");
 });
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
