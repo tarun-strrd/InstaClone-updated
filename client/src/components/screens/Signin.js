@@ -16,7 +16,7 @@ const Login = () => {
       M.toast({ html: "Provide valid Email", classes: "#f44336 red" });
       return;
     }
-    fetch("http://localhost:5000/auth/signin", {
+    fetch("https://insta-clone-api.vercel.app/auth/signin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
