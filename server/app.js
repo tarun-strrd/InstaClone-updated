@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const keys = require("./config/keys");
+const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 require("./models/user");
@@ -21,7 +22,7 @@ mongoose.connection.on("error", (err) => {
   //console.log(keys);
   console.log("error", err);
 });
-
+app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRouter);
